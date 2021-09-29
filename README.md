@@ -112,7 +112,7 @@ Each of the above are identical ways of playing the major fifth chord in the key
 2. `Ds3:C,E,G`
 3. `Ds3:1,3,5`
 
-The list of named chords can be found [here](https://github.com/Insulince/jtone/pkg/chord/chords.go#L74). You can play one like so:
+The list of named chords can be found [here](https://github.com/Insulince/jtone/blob/master/pkg/chord/chords.go#L74). You can play one like so:
 
 ```
 jtone play chord E3:mionor-seventh
@@ -144,7 +144,7 @@ Scales and chords are very similar structures sonically and thus have similar wa
 jtone play scale <scale>
 ```
 
-Scales respect the same 3 modes and methods of specifying a root note as chords do, but they have a different list of named scales. You can see the list [here](https://github.com/Insulince/jtone/pkg/scale/scales.go#L63).
+Scales respect the same 3 modes and methods of specifying a root note as chords do, but they have a different list of named scales. You can see the list [here](https://github.com/Insulince/jtone/blob/master/pkg/scale/scales.go#L63).
 
 Here is an example:
 
@@ -218,15 +218,15 @@ This is a _rough_ BNF grammar of how the notation system works.
     <degrees> ::= <degree> "," <degrees> | <degree>
      <degree> ::= {x ∈ Z | x >= 0}
 ```
-[*[1] List of named chords](https://github.com/Insulince/jtone/pkg/chord/chords.go#L74)
+[*[1] List of named chords](https://github.com/Insulince/jtone/blob/master/pkg/chord/chords.go#L74)
 
-[*[2] List of named scales](https://github.com/Insulince/jtone/pkg/scale/scales.go#L63)
+[*[2] List of named scales](https://github.com/Insulince/jtone/blob/master/pkg/scale/scales.go#L63)
 
 ## Further Notes
 
 - Sharp accidentals are preferred over flats anytime a tone is to be output. This is simply a consequence of the fact that there are multiple ways to represent the same tone and one must be chosen. I chose sharps. Despite this, though, flats are always valid to use, so feel free if that notation is more natural for you.
 - I have found that some sources put accidentals before the note when describing a tone while others put the accidental after. This is another case where I had to make a decision, and I chose for accidentals to _always_ appear after the note.
-- The library which provides sound, https://github.com/faiface/beep, for some reason has a delay of some sort that seems to be tied to "sample rate". This delay in playback causes the sounds to be cut short, so if you were playing a one-second tone you would only hear about 2/3rds of a second of playback. After some fiddling with different delay values and sample rates, I found that forcing the streamers to stay alive and silent for an extra 300 milliseconds prevents the sounds from being cut-off early. But I do not know if it is specific to my system or if the delay should be tweaked by some other parameters. In any case, it is defined [here](https://github.com/Insulince/jtone/pkg/util/const.go#L8) and you can adjust it if needed.
+- The library which provides sound, [beep](https://github.com/faiface/beep), for some reason has a delay of some sort that seems to be tied to "sample rate". This delay in playback causes the sounds to be cut short, so if you were playing a one-second tone you would only hear about 2/3rds of a second of playback. After some fiddling with different delay values and sample rates, I found that forcing the streamers to stay alive and silent for an extra 300 milliseconds prevents the sounds from being cut-off early. But I do not know if it is specific to my system or if the delay should be tweaked by some other parameters. In any case, it is defined [here](https://github.com/Insulince/jtone/blob/master/pkg/util/const.go#L8) and you can adjust it if needed.
 
 ## TODO
 
